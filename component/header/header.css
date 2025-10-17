@@ -1,0 +1,319 @@
+@import "tailwindcss";
+
+/* Loading animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Main container */
+.head {
+  min-height: 100vh;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  animation: fadeInUp 1s ease-out;
+}
+
+.maintext {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: bold;
+  line-height: 1.2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Status section with loading animation */
+.avwork {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  animation: fadeInLeft 1.2s ease-out 0.3s both;
+}
+
+/* Hero title with staggered animation */
+.hero-title {
+  margin: 2rem 0;
+  animation: fadeInUp 1.5s ease-out 0.6s both;
+}
+
+/* Blinking neon green dot */
+.neon-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #00ff41;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 
+    0 0 5px #00ff41,
+    0 0 10px #00ff41,
+    0 0 15px #00ff41,
+    0 0 20px #00ff41;
+  animation: neonBlinkSmooth 2.5s ease-in-out infinite;
+}
+
+@keyframes neonBlinkSmooth {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 
+      0 0 5px #00ff41,
+      0 0 10px #00ff41,
+      0 0 15px #00ff41,
+      0 0 20px #00ff41;
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 
+      0 0 2px #00ff41,
+      0 0 5px #00ff41;
+  }
+}
+
+/* Typewriter effect */
+.typewriter-container {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.typewriter-text {
+  display: inline-block;
+  animation: typing 3s steps(22, end) 1.5s both, blink 0.8s step-end infinite 4.5s;
+  border-right: 2px solid white;
+  padding-right: 2px;
+  width: 0;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 22ch; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+/* Button styles with loading animation */
+.cvbtn {
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: uppercase;
+  outline: 0;
+  border: 0;
+  padding: clamp(0.75rem, 2vw, 1rem);
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fadeInUp 1.8s ease-out 0.9s both;
+}
+
+.cvbtn:before {
+  background-color: #0866C2;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  margin-right: 10px;
+  transition: all 0.42s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 0;
+}
+
+.cvbtn:hover:before {
+  background-color: #00519d;
+  width: 3rem;
+}
+
+.cvbtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(8, 102, 194, 0.3);
+}
+
+/* Profile image section with loading animation */
+.profile-section {
+  animation: fadeInRight 1.5s ease-out 1.2s both;
+}
+
+.profile-glow {
+  animation: scaleIn 2s ease-out 1.5s both;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .maintext {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .profile-section {
+    order: -1;
+    margin: 0 auto 2rem auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .head {
+    padding: 0 0.5rem;
+  }
+  
+  .maintext {
+    padding: 1rem 0.5rem;
+    gap: 2rem;
+  }
+  
+  .avwork {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-title {
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+  
+  .hero-title br {
+    display: none;
+  }
+  
+  .cvbtn {
+    margin: 1.5rem auto 0 auto;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .neon-dot {
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+  }
+  
+  .profile-image-container {
+    width: 250px !important;
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .maintext {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+    padding: 0.5rem;
+  }
+  
+  .avwork {
+    font-size: 0.75rem;
+  }
+  
+  .cvbtn {
+    font-size: 0.75rem;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  .profile-image-container {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  
+  .typewriter-text {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .maintext {
+    padding: 2rem;
+  }
+}
+
+/* Loading skeleton animations */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Smooth transitions for better UX */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .neon-dot,
+  .typewriter-text,
+  .cvbtn,
+  .maintext,
+  .avwork,
+  .hero-title,
+  .profile-section,
+  .profile-glow {
+    animation: none;
+  }
+  
+  .typewriter-text {
+    width: auto;
+    border-right: none;
+  }
+}
